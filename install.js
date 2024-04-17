@@ -18,7 +18,7 @@ connection.connect((error) => {
     console.log("Connected through mySql");
 });
 
-module.exports = connection;
+module.exports = connection; //Exporterar variabeln connection för anvädnings i server.js
 /*********************************************/
 
 //SQL-frågor
