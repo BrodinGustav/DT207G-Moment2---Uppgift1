@@ -89,6 +89,19 @@ app.put('/cv/:id', (req, res) => {
     });
   });
   
+  // Ta bort en arbetslivserfarenhet
+  app.delete('/cv/:id', (req, res) => {
+    const id = req.params.id;                   //Hämtar värdet på parametern ID från URL
+    const sql = 'DELETE FROM cv WHERE id=?';
+    connection.query(sql, [id], (error, result) => {
+      if (error) {
+        res.status(500).json({ error: "Något gick fel: " + error });
+        return;
+      }
+      res.send('Data raderats!');
+    });
+  });
+  
 
 
 
