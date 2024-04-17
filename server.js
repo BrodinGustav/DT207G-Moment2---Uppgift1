@@ -54,6 +54,27 @@ app.get("/cv", (req, res) => {
     return;
     }
 
+    //Lägg till info till databasen
+
+    connection.query(`INSERT INTO cv(companyname, jobtitle, location)VALUES(?, ?, ?);`, [companyname, jobtitle, location], (error, results) => {
+        if (error) {
+            res.status(500).json({error: "Something went wrong" + error});
+            return;
+        }
+
+        let work = {                        //Skapar nytt objekt som skickas till databasen
+            companyname: companyname,
+            jobtitle: jobtitle,
+            location: location
+        };
+
+        res.json({message: "cv added", work});
+
+        }
+    );
+});
+
+
 
 
 //Startar applikationen
