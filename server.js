@@ -29,7 +29,7 @@ app.get("/cv", (req, res) => {
     });
     
     //Skapa info till CV
-    app.post("/cv", (req, res) => {
+    app.post("/cv", (req, res) => {                 //Hämtar värdena från JSON-objektet som skickas med när användaren skickar ny data till databasen via webbplatsen.
         let companyname = req.body.companyname;
         let jobtitle = req.body.jobtitle;
         let location = req.body.location;
@@ -78,9 +78,9 @@ app.get("/cv", (req, res) => {
 // Uppdatera en arbetslivserfarenhet
 app.put('/cv/:id', (req, res) => {
     const id = req.params.id;
-    const { companyname, jobtitle, location } = req.body;
-    const sql = 'UPDATE cv SET companyname=?, jobtitle=?, location=? WHERE id=?';
-    connection.query(sql, [companyname, jobtitle, location, id], (error, result) => {
+    const { companyname, jobtitle, location } = req.body;                               //Extraherar datan från användarens förfrågan och tilldelar de variabler. 
+    const sql = 'UPDATE cv SET companyname=?, jobtitle=?, location=? WHERE id=?';       //Ersätter de befintliga värdena med de nya
+    connection.query(sql, [companyname, jobtitle, location, id], (error, result) => {   //Skickar med de nya värdena samt ID i funktionen
       if (error) {
         res.status(500).json({ error: "Något gick fel: " + error });
         return;
@@ -91,9 +91,9 @@ app.put('/cv/:id', (req, res) => {
   
   // Ta bort en arbetslivserfarenhet
   app.delete('/cv/:id', (req, res) => {
-    const id = req.params.id;                   //Hämtar värdet på parametern ID från URL
-    const sql = 'DELETE FROM cv WHERE id=?';
-    connection.query(sql, [id], (error, result) => {
+    const id = req.params.id;                                                        //Hämtar värdet på parametern ID från URL
+    const sql = 'DELETE FROM cv WHERE id=?';                                        //
+    connection.query(sql, [id], (error, result) => {                                //Skickar med ID som parameter i SQL-frågan
       if (error) {
         res.status(500).json({ error: "Något gick fel: " + error });
         return;
