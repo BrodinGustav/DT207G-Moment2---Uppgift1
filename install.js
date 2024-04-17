@@ -41,6 +41,49 @@ location VARCHAR(255))`, (error, results) => {
     if(error) throw error;
 
     console.log("Table cv created ");
+
+    connection.query(`INSERT INTO cv (companyname, jobtitle, location) VALUES (?, ?, ?)`, ["Zborr AB", "Arbetsledare", "Östersund"], (error, results) => {
+        if(error) throw error;
+        console.log('Data successfully inserted into cv table.');
+        
+    });
+
+    connection.query(`INSERT INTO cv (companyname, jobtitle, location) VALUES (?, ?, ?)`, ["Zborr AB", "Håltagare/Sanerare", "Östersund"], (error, results) => {
+        if(error) throw error;
+        console.log('Data successfully inserted into cv table.');
+        
+    });
+
+    connection.query(`INSERT INTO cv (companyname, jobtitle, location) VALUES (?, ?, ?)`, ["Hägerstens AB", "Håltagare", "Stockholm"], (error, results) => {
+        if(error) throw error;
+        console.log('Data successfully inserted into cv table.');
+        
+    });
+
+    connection.query(`INSERT INTO cv (companyname, jobtitle, location) VALUES (?, ?, ?)`, ["Gnesta Kommun", "Lärare", "Gnesta"], (error, results) => {
+        if(error) throw error;
+        console.log('Data successfully inserted into cv table.');
+        
+    });
+
+    connection.query(`INSERT INTO cv (companyname, jobtitle, location) VALUES (?, ?, ?)`, ["Bikupan FSK", "Föreskolepedagod", "Östersund"], (error, results) => {
+        if(error) throw error;
+        console.log('Data successfully inserted into cv table.');
+        
+    });
+
+    connection.query(`INSERT INTO cv (companyname, jobtitle, location) VALUES (?, ?, ?)`, ["Krokom Kommun", "Hemtjänst", "Krokom"], (error, results) => {
+        if(error) throw error;
+        console.log('Data successfully inserted into cv table.');
+        
+    });
+
+    connection.query(`INSERT INTO cv (companyname, jobtitle, location) VALUES (?, ?, ?)`, ["SwedishMatch", "Lager", "Göteborg"], (error, results) => {
+        if(error) throw error;
+        console.log('Data successfully inserted into cv table.');
+        
+    });
+
 })
 
 

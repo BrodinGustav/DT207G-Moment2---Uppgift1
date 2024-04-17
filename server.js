@@ -68,7 +68,7 @@ app.get("/cv", (req, res) => {
             location: location
         };
 
-        res.json({message: "cv tilllagd", work});
+        res.status(201).json({message: "cv tilllagd", work});
 
         }
     );
