@@ -16,7 +16,7 @@ app.get("/cv", (req, res) => {
 
     connection.query(`SELECT * FROM cv;`, (error, results) => {
         if(error) {
-            res.status(500).json({error: "Something went wrong: " + error});
+            res.status(500).json({error: "Något gick fel: " + error});
             return;
         }
         //Kontroll kod för resultat. Om ingen table vid namn CV finns skickas statuskod 200 eftersom begäran är godkänd, men databas finns ej.
@@ -58,7 +58,7 @@ app.get("/cv", (req, res) => {
 
     connection.query(`INSERT INTO cv(companyname, jobtitle, location)VALUES(?, ?, ?);`, [companyname, jobtitle, location], (error, results) => {
         if (error) {
-            res.status(500).json({error: "Something went wrong" + error});
+            res.status(500).json({error: "Något gick fel" + error});
             return;
         }
 
@@ -68,12 +68,27 @@ app.get("/cv", (req, res) => {
             location: location
         };
 
-        res.json({message: "cv added", work});
+        res.json({message: "cv tilllagd", work});
 
         }
     );
 });
 
+
+// Uppdatera en arbetslivserfarenhet
+app.put('/cv/:id', (req, res) => {
+    const id = req.params.id;
+    const { companyname, jobtitle, location } = req.body;
+    const sql = 'UPDATE cv SET companyname=?, jobtitle=?, location=? WHERE id=?';
+    connection.query(sql, [companyname, jobtitle, location, id], (error, result) => {
+      if (error) {
+        res.status(500).json({ error: "Något gick fel: " + error });
+        return;
+      }
+      res.send('CV uppdaterades!');
+    });
+  });
+  
 
 
 
@@ -81,4 +96,3 @@ app.get("/cv", (req, res) => {
 app.listen(port, () => {
     console.log("Server started on port " + port);
 });
-})
