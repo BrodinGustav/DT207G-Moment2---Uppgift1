@@ -29,7 +29,7 @@ app.get("/cv", (req, res) => {
     });
     
     //Skapa info till CV
-    app.post("/cv", (req, res) => {                 //Hämtar värdena från JSON-objektet som skickas med när användaren skickar ny data till databasen via webbplatsen.
+    app.post("/cv", (req, res) => {                 //Hämtar värdena från JSON-objektet som skickas med när ny data till databasen skickas via webbplatsen.
         let companyname = req.body.companyname;
         let jobtitle = req.body.jobtitle;
         let location = req.body.location;
